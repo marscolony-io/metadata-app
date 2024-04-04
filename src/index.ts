@@ -76,6 +76,6 @@ app.use((req: express.Request, res: express.Response, next: Function) => {
   res.status(404).end();
 });
 
-app.listen(environment.PORT, "127.0.0.1", () => {
-  console.log("server started", environment.PORT);
+app.listen(process.env.PORT as unknown as number, "127.0.0.1", () => {
+  console.log("server started", process.env.PORT);
 });

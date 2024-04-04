@@ -9,8 +9,12 @@ export type Environment = {
   PORT: number;
   NETWORK: string;
 };
-
-export const environment = cleanEnv(process.env, {
-  NETWORK: str({ choices: ["harmain", "mumbai", "polygon", "fuji"] }),
-  PORT: num({ default: 8000 }),
-});
+export const environment = {
+  NETWORK: process.env.NETWORK,
+  PORT: process.env.PORT,
+};
+// export const environment = cleanEnv(process.env, {
+//   // NETWORK: str({ choices: ["harmain", "mumbai", "polygon", "fuji"] }),
+//   NETWORK: "polygon" as any,
+//   PORT: num({ default: 8000 }),
+// });
