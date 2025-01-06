@@ -5,7 +5,7 @@ import MC from "../abi/MC.json";
 import GM from "../abi/GameManager.json";
 import LANDSTATS from "../abi/LandStats.json";
 import { AbiItem } from "web3-utils";
-import { ALCHEMY_KEY } from "../secrets";
+// import { ALCHEMY_KEY } from "../secrets";
 import { environment } from "../environment";
 
 const nodeMap = {
@@ -15,7 +15,7 @@ const nodeMap = {
     "https://api.harmony.one",
     "https://api.s0.t.hmny.io",
   ],
-  mumbai: ["https://polygon-mumbai.g.alchemy.com/v2/" + ALCHEMY_KEY],
+  // mumbai: ["https://polygon-mumbai.g.alchemy.com/v2/" + ALCHEMY_KEY],
   polygon: [
     "https://polygon-rpc.com",
     "https://rpc-mainnet.matic.network",
@@ -23,6 +23,8 @@ const nodeMap = {
     "https://rpc.ankr.com/polygon",
   ],
   fuji: ["https://api.avax-test.network/ext/bc/C/rpc"],
+  "zero-testnet": ["https://rpc.zerion.io/v1/zero-sepolia"],
+  zero: ["https://rpc.zerion.io/v1/zero"],
 };
 
 const nodes = nodeMap[environment.NETWORK];

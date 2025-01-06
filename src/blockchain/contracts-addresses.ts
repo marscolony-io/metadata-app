@@ -28,9 +28,9 @@ const NETWORK_DATA: Record<
     shares: true,
     meta: "https://meta-polygon.marscolony.io/",
     excludeFromSupply: [
-      '0x42f9f020afe1b2a9554ad6c0749447519692f630', // treasury
-      '0xCAFAeD55fEfEd74Ca866fE72D65CfF073eb42797', // gamemanager - buffer for claiming
-      '0x97F8027E5BbcE64200B65c5cF675fCED587eF0e8', // liquidity for mining
+      "0x42f9f020afe1b2a9554ad6c0749447519692f630", // treasury
+      "0xCAFAeD55fEfEd74Ca866fE72D65CfF073eb42797", // gamemanager - buffer for claiming
+      "0x97F8027E5BbcE64200B65c5cF675fCED587eF0e8", // liquidity for mining
       // '0x0319000133d3ada02600f0875d2cf03d442c3367', // liquidity in sushiswap
     ],
   },
@@ -50,6 +50,24 @@ const NETWORK_DATA: Record<
     LANDSTATS: "0xE5F9559FCC5403dda8695dDc7C5E3255C2e25d68",
     shares: false,
     meta: "https://meta-fuji.marscolony.io/",
+    excludeFromSupply: [],
+  },
+  "zero-testnet": {
+    CLNY: "0x61034fbb71601BEdA564B1935bb15251774a7dA9",
+    MC: "0x11D7a1b613ff8912DAD43d3A3b3B87Ebf68f4fA1",
+    GM: "0x5919606764de2370BcD18796aDEA6d92168E338f",
+    LANDSTATS: "0xA8480bB171D612d32e926F86d781a0B9e4EE46A9",
+    shares: false,
+    meta: "https://meta-zero-testnet.marscolony.io/",
+    excludeFromSupply: [],
+  },
+  zero: {
+    CLNY: "",
+    MC: "",
+    GM: "",
+    LANDSTATS: "",
+    shares: false,
+    meta: "https://meta-zero.marscolony.io/",
     excludeFromSupply: [],
   },
 };

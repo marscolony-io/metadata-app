@@ -2,7 +2,12 @@ import express from "express";
 import { generateImage } from "./helpers/generate-image";
 import { generateMetadata } from "./helpers/generate-metadata";
 import cors from "cors";
-import { allTokens, getCirculatingSupply, getMetrics, getSupply } from "./services/TokenService";
+import {
+  allTokens,
+  getCirculatingSupply,
+  getMetrics,
+  getSupply,
+} from "./services/TokenService";
 import { environment } from "./environment";
 import { getLandStatCachedData } from "./services/LandStatSevice";
 
@@ -21,11 +26,14 @@ app.get("/clny-supply", (req: express.Request, res: express.Response) => {
   });
 });
 
-app.get("/clny-circulating-supply", (req: express.Request, res: express.Response) => {
-  getCirculatingSupply().then((supply) => {
-    res.send(supply);
-  });
-});
+app.get(
+  "/clny-circulating-supply",
+  (req: express.Request, res: express.Response) => {
+    getCirculatingSupply().then((supply) => {
+      res.send(supply);
+    });
+  }
+);
 
 app.get("/tokens", (req: express.Request, res: express.Response) => {
   res.json(allTokens);
@@ -42,6 +50,7 @@ app.get("/clny-stat", (req: express.Request, res: express.Response) => {
 // image for a token
 app.get("/:token.png", (req: express.Request, res: express.Response) => {
   const { token } = req.params;
+
   const tokenNumber = parseInt(token);
   if (Number.isNaN(tokenNumber) || tokenNumber < 1 || tokenNumber > 21000) {
     res.status(404).end();

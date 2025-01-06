@@ -7,13 +7,21 @@ const canvas = createCanvas(50, 50);
 
 const cache: string[] = new Array(21000);
 
-type Network = 'harmain' | 'fuji' | 'mumbai' | 'polygon';
+type Network =
+  | "harmain"
+  | "fuji"
+  | "mumbai"
+  | "polygon"
+  | "zero-testnet"
+  | "zero";
 
 const CHAIN_DATA: Record<Network, any[]> = {
   harmain: ["#dddd44", "#774455", "#dd2233", "", 10],
   fuji: ["#dddd44", "#774455", "#dd2233", "", 10],
   mumbai: ["#803bd4", "#b176ea", "#413f67", "^&", 10],
   polygon: ["#803bd4", "#b176ea", "#413f67", "^&", 10],
+  "zero-testnet": ["#803bd4", "#b176ea", "#413f67", "^&", 10],
+  zero: ["#803bd4", "#b176ea", "#413f67", "^&", 10],
 };
 
 export const generateImage = (token: number): string => {
@@ -22,6 +30,7 @@ export const generateImage = (token: number): string => {
   }
   const [color, bgcolor, spotcolor, seedSalt, size] =
     CHAIN_DATA[environment.NETWORK as Network];
+
   const icon = renderIcon(
     {
       seed: token.toString() + seedSalt,
