@@ -19,12 +19,10 @@ export const allTokens: Array<number> = [];
 (async () => {
   let start = 0;
   while (true) {
-    console.log("current", start);
     try {
       const data = await mc.methods
         .allTokensPaginate(start, start + 999)
         .call();
-      console.log("allTokensPaginate data", data);
       allTokens.push(...data.map((id: string) => parseInt(id)));
       start += data.length;
       if (start >= 21000) {
@@ -70,7 +68,6 @@ const tokenData: Map<number, TokenData> = new Map();
           });
           k++;
         }
-        console.log("ok", i);
         i = i + BUNCH_SIZE;
       } catch (error: any) {
         console.log("data", error.message);
@@ -163,7 +160,9 @@ type Metrics = {
         available: metrics.limit - metrics.minted,
         claimed: parseInt(metrics.minted),
       };
-    } catch {}
+    } catch (error: any) {
+      console.log("saleData error", error.message);
+    }
 
     await new Promise((rs) => setTimeout(rs, 10_000));
   }

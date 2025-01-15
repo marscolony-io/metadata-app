@@ -1,4 +1,4 @@
-import { ls } from "../blockchain/contracts";
+import { clny, ls } from "../blockchain/contracts";
 
 const TTL = 100000; // expiration of cache in ms
 
@@ -13,8 +13,12 @@ const getStatFromContract = async (): Promise<StatData | null> => {
   try {
     const data = await ls.methods.getClnyStat().call();
     console.log("getStatFromContract data", data);
+
+    const clnyTotalSupply = await clny.methods.totalSupply().call();
+    console.log("clnyTotalSupply", clnyTotalSupply / 10 ** 18);
     return {
-      minted: data.minted,
+      // minted: data.minted,
+      minted: Math.round(clnyTotalSupply / 10 ** 18),
       burned: data.burned,
       avg: data.avg,
       max: data.max,
