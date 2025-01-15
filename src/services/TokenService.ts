@@ -24,6 +24,7 @@ export const allTokens: Array<number> = [];
       const data = await mc.methods
         .allTokensPaginate(start, start + 999)
         .call();
+      console.log("allTokensPaginate data", data);
       allTokens.push(...data.map((id: string) => parseInt(id)));
       start += data.length;
       if (start >= 21000) {
