@@ -19,6 +19,7 @@ export const allTokens: Array<number> = [];
 (async () => {
   let start = 0;
   while (true) {
+    console.log("current", start);
     try {
       const data = await mc.methods
         .allTokensPaginate(start, start + 999)
@@ -135,7 +136,7 @@ export const getSupply = async (): Promise<string> => {
 export const getCirculatingSupply = async (): Promise<string> => {
   try {
     const totalSupply = await clny.methods.totalSupply().call();
-    
+
     let lockedSupply = 0;
     for (const address of CONTRACTS.excludeFromSupply) {
       const balance = await clny.methods.balanceOf(address).call();

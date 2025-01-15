@@ -12,6 +12,7 @@ type StatData = {
 const getStatFromContract = async (): Promise<StatData | null> => {
   try {
     const data = await ls.methods.getClnyStat().call();
+    console.log("getStatFromContract data", data);
     return {
       minted: data.minted,
       burned: data.burned,
