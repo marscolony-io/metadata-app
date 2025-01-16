@@ -16,10 +16,14 @@ const getStatFromContract = async (): Promise<StatData | null> => {
 
     const clnyTotalSupply = await clny.methods.totalSupply().call();
     console.log("clnyTotalSupply", clnyTotalSupply / 10 ** 18);
+
+    const burned = await clny.methods.burnedStats(1).call();
+    console.log("burned", burned / 10 ** 18);
+
     return {
       // minted: data.minted,
       minted: Math.round(clnyTotalSupply / 10 ** 18),
-      burned: data.burned,
+      burned: Math.round(burned / 10 ** 18),
       avg: data.avg,
       max: data.max,
     };
